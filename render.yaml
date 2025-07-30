@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: ai-tool-chatbot
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: "python app.py"
+    envVars:
+      - key: OPENAI_API_KEY
+        value: YOUR_KEY_HERE  # Leave as placeholder or remove this line and add it in the Render UI
