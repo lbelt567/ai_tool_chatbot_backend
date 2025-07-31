@@ -50,14 +50,26 @@ def chat():
         relevant_tools = search_similar_tools(prompt)
 
         tool_context = "\n\n".join([
-            f"Name: {tool['Name']}\nDescription: {tool['Short Description']}" for tool in relevant_tools
+                f"Name: {tool['Name']}\n"
+                f"Description: {tool['Short Description']}\n"
+                f"Categories: {tool.get('Categories', 'N/A')}\n"
+                f"Pricing: {tool.get('Pricing', 'N/A')}\n"
+                f"Link: {tool.get('Homepage', 'N/A')}"
+                for tool in relevant_tools
         ])
 
         full_prompt = (
-            f"You are an AI assistant that recommends the best AI tools for a users use case.\n\n"
+            "You are an expert AI assistant that helps users discover the best AI tools for their specific needs.\n\n"
             f"User prompt: {prompt}\n\n"
-            f"Here are some relevant tools:\n{tool_context}\n\n"
-            f"Based on the user prompt and the tools above, recommend the best option and explain why. Make sure to keep this in mind: - Recommend the most relevant tool(s) from the context. - Justify why it fits the user's need. - Mention pricing and platform compatibility if available. - If multiple tools apply, compare them clearly.- If no tool matches well, suggest a general-purpose LLM. Be concise, friendly, and helpful. Make sure to provide a link to the tool."
+            "Below are some tools that may be relevant:\n"
+            f"{tool_context}\n\n"
+            "Your job is to:\n"
+            "- Recommend the best tool(s) based on the user's need.\n"
+            "- Use the context above when possible, highlighting each tool’s category and pricing.\n"
+            "- Provide a direct, clickable link (e.g., https://...) to the tool’s homepage using Markdown.\n"
+            "- If no strong match is found, feel free to suggest a general-purpose AI tool like ChatGPT, Claude, or Gemini.\n"
+            "- Be clear, concise, and helpful — like you're giving advice to a friend who wants to save time.\n\n"
+            "Make sure your recommendation feels thoughtful and trustworthy. End with an encouraging tone so the user feels confident trying the tool."
         )
 
         response = client.chat.completions.create(
