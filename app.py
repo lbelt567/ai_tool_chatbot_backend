@@ -64,7 +64,7 @@ def chat():
             "Below are some tools that may be relevant:\n"
             f"{tool_context}\n\n"
             "Your job is to:\n"
-            "- Recommend the best tool(s) based on the user's need.\n"
+            "- Recommend the best tool(s) based on the user's need. Always highlight any free or freemium options available, especially if they can achieve the same goal as paid alternatives. If multiple tools are relevant, compare them briefly and explain which is best suited and why.\n"
             "- Use the context above when possible, highlighting each tool’s category and pricing.\n"
             "- Provide a direct, clickable link (e.g., https://...) to the tool’s homepage using Markdown.\n"
             "- If no strong match is found, feel free to suggest a general-purpose AI tool like ChatGPT, Claude, or Gemini.\n"
