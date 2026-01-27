@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-dark-950 text-dark-50 font-sans antialiased;
+}
+
+/* Selection */
+::selection {
+  @apply bg-primary-500/30 text-white;
+}
+
+/* Focus outline */
+*:focus-visible {
+  @apply outline-none ring-2 ring-primary-500 ring-offset-2 ring-offset-dark-900;
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-accent-purple to-accent-cyan;
+  }
+
+  .text-gradient-alt {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-emerald to-accent-cyan;
+  }
+
+  .bg-glass {
+    @apply bg-dark-800/50 backdrop-blur-xl border border-dark-700/50;
+  }
+
+  .bg-glass-light {
+    @apply bg-dark-800/30 backdrop-blur-md border border-dark-700/30;
+  }
+
+  .glow-border {
+    @apply relative;
+  }
+
+  .glow-border::before {
+    content: '';
+    @apply absolute -inset-[1px] rounded-xl bg-gradient-to-r from-primary-500 via-accent-purple to-primary-500 opacity-50 blur-sm -z-10;
+  }
+
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 3s ease infinite;
+  }
+
+  .typing-dots span {
+    @apply inline-block w-2 h-2 bg-primary-400 rounded-full mx-0.5;
+    animation: typing 1.4s infinite both;
+  }
+
+  .typing-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .typing-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+}
+
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Markdown styles for chat responses */
+.prose-chat {
+  @apply text-dark-100 leading-relaxed;
+}
+
+.prose-chat p {
+  @apply mb-3 last:mb-0;
+}
+
+.prose-chat a {
+  @apply text-primary-400 hover:text-primary-300 underline underline-offset-2 transition-colors;
+}
+
+.prose-chat strong {
+  @apply font-semibold text-white;
+}
+
+.prose-chat ul, .prose-chat ol {
+  @apply mb-3 pl-4 space-y-1;
+}
+
+.prose-chat li {
+  @apply list-disc;
+}
+
+.prose-chat code {
+  @apply bg-dark-700/50 px-1.5 py-0.5 rounded text-sm font-mono text-primary-300;
+}
+
+.prose-chat pre {
+  @apply bg-dark-800 rounded-lg p-4 overflow-x-auto mb-3;
+}
+
+.prose-chat pre code {
+  @apply bg-transparent p-0;
+}
+
+/* Hero background animation */
+.hero-bg {
+  background:
+    radial-gradient(ellipse 80% 80% at 50% -20%, rgba(99, 102, 241, 0.3), transparent),
+    radial-gradient(ellipse 60% 60% at 80% 50%, rgba(139, 92, 246, 0.15), transparent),
+    radial-gradient(ellipse 60% 60% at 20% 80%, rgba(6, 182, 212, 0.1), transparent),
+    linear-gradient(180deg, #020617 0%, #0f172a 50%, #1e1b4b 100%);
+}
+
+/* Animated orbs */
+.orb {
+  @apply absolute rounded-full blur-3xl opacity-30;
+  animation: orb-float 20s ease-in-out infinite;
+}
+
+.orb-1 {
+  @apply w-96 h-96 bg-primary-500 -top-48 -left-48;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  @apply w-80 h-80 bg-accent-purple top-1/4 -right-40;
+  animation-delay: -5s;
+}
+
+.orb-3 {
+  @apply w-72 h-72 bg-accent-cyan bottom-0 left-1/4;
+  animation-delay: -10s;
+}
+
+@keyframes orb-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+/* Card hover effects */
+.card-hover {
+  @apply transition-all duration-300 ease-out;
+}
+
+.card-hover:hover {
+  @apply -translate-y-1 shadow-glow;
+}
+
+/* Input glow effect */
+.input-glow:focus-within {
+  @apply shadow-glow;
+}
+
+/* Shimmer effect for loading */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
