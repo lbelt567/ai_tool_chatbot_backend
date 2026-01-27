@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sparkles, Github, Twitter } from 'lucide-react';
+import { Menu, X, Sparkles } from 'lucide-react';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -69,32 +69,6 @@ export default function Navigation() {
               ))}
             </div>
 
-            {/* CTA & Social */}
-            <div className="hidden md:flex items-center gap-3">
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 text-dark-400 hover:text-white transition-colors"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 text-dark-400 hover:text-white transition-colors"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-5 py-2.5 bg-gradient-to-r from-primary-500 to-accent-purple text-white font-semibold rounded-xl hover:shadow-glow transition-shadow"
-              >
-                Get Started
-              </motion.button>
-            </div>
 
             {/* Mobile Menu Button */}
             <button
@@ -133,11 +107,6 @@ export default function Navigation() {
                     {link.name}
                   </a>
                 ))}
-                <div className="pt-4 px-4">
-                  <button className="w-full py-3 bg-gradient-to-r from-primary-500 to-accent-purple text-white font-semibold rounded-xl">
-                    Get Started
-                  </button>
-                </div>
               </div>
             </div>
           </motion.div>
