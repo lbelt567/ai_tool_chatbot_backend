@@ -1,8 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -45,10 +46,15 @@ export default function Navigation() {
               whileTap={{ scale: 0.98 }}
             >
               <div className="relative">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-accent-purple flex items-center justify-center">
-                  <Sparkles className="w-5 h-5 text-white" />
-                </div>
-                <div className="absolute -inset-1 bg-gradient-to-r from-primary-500 to-accent-purple rounded-xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity" />
+                <Image
+                  src="/innovative-mind-toolbox-logo.png"
+                  alt="Innovative Mind Toolbox logo"
+                  width={44}
+                  height={44}
+                  priority
+                  className="rounded-xl ring-1 ring-primary-400/25 shadow-[0_0_30px_rgba(56,189,248,0.28)]"
+                />
+                <div className="absolute -inset-1 -z-10 rounded-xl bg-primary-400/20 blur-lg opacity-50 group-hover:opacity-70 transition-opacity" />
               </div>
               <span className="font-display font-bold text-xl text-white hidden sm:block">
                 AI Tool<span className="text-primary-400">Rec</span>
