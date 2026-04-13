@@ -41,22 +41,19 @@ export default function Navigation() {
             {/* Logo */}
             <motion.a
               href="#"
-              className="flex items-center gap-2 group"
+              className="flex items-center gap-3 group"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <div className="relative">
-                <Image
-                  src="/innovative-mind-toolbox-logo.png"
-                  alt="Innovative Mind Toolbox logo"
-                  width={44}
-                  height={44}
-                  priority
-                  className="rounded-xl ring-1 ring-primary-400/25 shadow-[0_0_30px_rgba(56,189,248,0.28)]"
-                />
-                <div className="absolute -inset-1 -z-10 rounded-xl bg-primary-400/20 blur-lg opacity-50 group-hover:opacity-70 transition-opacity" />
-              </div>
-              <span className="font-display font-bold text-xl text-white hidden sm:block">
+              <Image
+                src="/innovative-mind-toolbox-logo.png"
+                alt="Innovative Mind Toolbox logo"
+                width={48}
+                height={48}
+                priority
+                className="block h-12 w-12 object-contain"
+              />
+              <span className="font-display font-bold text-xl text-white hidden sm:block leading-none">
                 AI Tool<span className="text-primary-400">Rec</span>
               </span>
             </motion.a>
